@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const postApiSlice = createApi({
+const postApi = createApi({
     reducerPath: 'postApi',
     tagTypes: ['Post'],
     baseQuery: fetchBaseQuery({
@@ -66,6 +66,6 @@ export const {
     useCreatePostMutation,
     useUpdatePostMutation,
     useDeletePostMutation,
-} = postApiSlice;
+} = postApi;
 
-export default postApiSlice;
+export default postApi;

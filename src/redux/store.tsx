@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { authApi } from './slices/auth/authApi';
+import authSliceReducer from './slices/auth/authSlice';
 import counterSliceReducer from './slices/counter';
-import postApiSlice from './slices/post';
+import postApi from './slices/post';
 import todoSliceReducer from './slices/todo';
 
 export const store = configureStore({
@@ -10,10 +12,16 @@ export const store = configureStore({
         // e.g., state.counter.value
         counter: counterSliceReducer,
         todo: todoSliceReducer,
-        [postApiSlice.reducerPath]: postApiSlice.reducer,
+        [postApi.reducerPath]: postApi.reducer,
+
+        // state.auth -> handle state locally
+        auth: authSliceReducer,
+
+        // used to handle api calls
+        [authApi.reducerPath]: authApi.reducer,
     },
     middleware: getDefaultMiddleware =>
-        getDefaultMiddleware().concat(postApiSlice.middleware),
+        getDefaultMiddleware().concat(postApi.middleware, authApi.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
