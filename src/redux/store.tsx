@@ -6,22 +6,22 @@ import postApi from './slices/post';
 import todoSliceReducer from './slices/todo';
 
 export const store = configureStore({
-    // Add the generated reducer as a specific top-level slice
-    reducer: {
-        // The `counter` key will be used to access the state in the store
-        // e.g., state.counter.value
-        counter: counterSliceReducer,
-        todo: todoSliceReducer,
-        [postApi.reducerPath]: postApi.reducer,
+  // Add the generated reducer as a specific top-level slice
+  reducer: {
+    // The `counter` key will be used to access the state in the store
+    // e.g., state.counter.value
+    counter: counterSliceReducer,
+    todo: todoSliceReducer,
+    [postApi.reducerPath]: postApi.reducer,
 
-        // state.auth -> handle state locally
-        auth: authSliceReducer,
+    // state.auth -> handle state locally
+    auth: authSliceReducer,
 
-        // used to handle api calls
-        [authApi.reducerPath]: authApi.reducer,
-    },
-    middleware: getDefaultMiddleware =>
-        getDefaultMiddleware().concat(postApi.middleware, authApi.middleware),
+    // used to handle api calls
+    [authApi.reducerPath]: authApi.reducer,
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(postApi.middleware, authApi.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -6,21 +6,21 @@ import Profile from '../features/Profile/Profile';
 import PrivateRoute from './PrivateRoute';
 
 export default function AppRoutes() {
-    return (
-        <Routes>
-            {/* public */}
-            <Route path="/login" element={<Login />} />
+  return (
+    <Routes>
+      {/* public */}
+      <Route path="/login" element={<Login />} />
 
-            {/* private */}
-            <Route element={<PrivateRoute />}>
-                <Route element={<MainLayout />}>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/profile" element={<Profile />} />
-                </Route>
-            </Route>
+      {/* private */}
+      <Route element={<PrivateRoute />}>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+      </Route>
 
-            {/* default */}
-            <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-    );
+      {/* default */}
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
+  );
 }
